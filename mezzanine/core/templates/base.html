@@ -32,9 +32,14 @@
 {% endcompress %}
 
 {% compress js %}
+<!--
 <script src="{% static "mezzanine/js/"|add:settings.JQUERY_FILENAME %}"></script>
-<script src="{% static "js/bootstrap.js" %}"></script>
 <script src="{% static "js/bootstrap-extras.js" %}"></script>
+-->
+
+<script src="{% static "js/jquery.js" %}"></script>
+<script src="{% static "js/popper.js" %}"></script>
+<script src="{% static "js/bootstrap.js" %}"></script>
 {% block extra_js %}{% endblock %}
 {% endcompress %}
 
@@ -48,26 +53,27 @@
 
 <body id="{% block body_id %}body{% endblock %}">
 
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" role="navigation">
 <div class="container">
 <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">{% trans "Toggle Navigation" %}</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
     </button>
     {% block navbar_title %}
     {% if settings.SITE_TITLE %}<a class="navbar-brand" href="/">{{ settings.SITE_TITLE }}</a>{% endif %}
-    {% if settings.SITE_TAGLINE %}<p class="navbar-text visible-lg">{{ settings.SITE_TAGLINE }}</p>{% endif %}
+
+    {% comment %}
+        {% if settings.SITE_TAGLINE %}<span class="navbar-text">{{ settings.SITE_TAGLINE }}</span>{% endif %}
+    {% endcomment %}
+
     {% endblock%}
 </div>
-<div class="navbar-collapse collapse">
-    {% block navbar_search_form %}{% search_form "all" %}{% endblock %}
+<div class="navbar-collapse collapse" id="navbarSupportedContent">
     {% block navbar_dropdown_menu %}{% page_menu "pages/menus/dropdown.html" %}{% endblock%}
+    {% block navbar_search_form %}{% search_form "all" %}{% endblock %}
 </div>
 </div>
-</div>
+</nav>
 
 <div class="container">
 
@@ -86,11 +92,13 @@
 
 <h1>{% block title %}{% endblock %}</h1>
 
-<ul class="breadcrumb">
-{% spaceless %}
-{% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
-{% endspaceless %}
-</ul>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+  {% spaceless %}
+    {% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
+  {% endspaceless %}
+  </ol>
+</nav>
 
 </div>
 
