@@ -7,7 +7,8 @@ filebrowser.
 from __future__ import unicode_literals
 from future.builtins import str
 
-from django.conf.urls import include, url
+# from django.conf.urls import include, url
+from django.urls import include, re_path, path
 from django.contrib.sitemaps.views import sitemap
 from django.views.i18n import JavaScriptCatalog
 from django.http import HttpResponse
@@ -21,7 +22,7 @@ urlpatterns = []
 # JavaScript localization feature
 js_info_dict = {'domain': 'django'}
 urlpatterns += [
-    url(r'^jsi18n/(?P<packages>\S+?)/$', JavaScriptCatalog.as_view(),
+    re_path(r'^jsi18n/(?P<packages>\S+?)/$', JavaScriptCatalog.as_view(),
         js_info_dict),
 ]
 
@@ -32,28 +33,28 @@ if settings.DEBUG and "debug_toolbar" in settings.INSTALLED_APPS:
         pass
     else:
         urlpatterns += [
-            url(r'^__debug__/', include(debug_toolbar.urls)),
+            re_path(r'^__debug__/', include(debug_toolbar.urls)),
         ]
 
 # Django's sitemap app.
 if "django.contrib.sitemaps" in settings.INSTALLED_APPS:
     sitemaps = {"sitemaps": {"all": DisplayableSitemap}}
     urlpatterns += [
-        url(r"^sitemap\.xml$", sitemap, sitemaps),
+        re_path(r"^sitemap\.xml$", sitemap, sitemaps),
     ]
 
 # Return a robots.txt that disallows all spiders when DEBUG is True.
 if getattr(settings, "DEBUG", False):
     urlpatterns += [
-        url(r"^robots\.txt$",
+        re_path(r"^robots\.txt$",
             lambda r: HttpResponse("User-agent: *\nDisallow: /",
                                    content_type="text/plain")),
     ]
 
 # Miscellanous Mezzanine patterns.
 urlpatterns += [
-    url(r"^", include("mezzanine.core.urls")),
-    url(r"^", include("mezzanine.generic.urls")),
+    re_path(r"^", include("mezzanine.core.urls")),
+    re_path(r"^", include("mezzanine.generic.urls")),
 ]
 
 # Mezzanine's Accounts app
@@ -62,7 +63,7 @@ if "mezzanine.accounts" in settings.INSTALLED_APPS:
     # to honour the LOGIN_* settings, which Django has prefixed with
     # /account/ by default. So those settings are used in accounts.urls
     urlpatterns += [
-        url(r"^", include("mezzanine.accounts.urls")),
+        re_path(r"^", include("mezzanine.accounts.urls")),
     ]
 
 # Mezzanine's Blog app.
@@ -72,7 +73,7 @@ if blog_installed:
     if BLOG_SLUG:
         BLOG_SLUG += "/"
     blog_patterns = [
-        url(r"^%s" % BLOG_SLUG, include("mezzanine.blog.urls")),
+        re_path(r"^%s" % BLOG_SLUG, include("mezzanine.blog.urls")),
     ]
     urlpatterns += blog_patterns
 
@@ -86,9 +87,9 @@ if "mezzanine.pages" in settings.INSTALLED_APPS:
         PAGES_SLUG = getattr(settings, "PAGES_SLUG", "pages").strip("/") + "/"
         blog_patterns_start = urlpatterns.index(blog_patterns[0])
         urlpatterns[blog_patterns_start:len(blog_patterns)] = [
-            url(r"^%s" % str(PAGES_SLUG), include("mezzanine.pages.urls")),
+            re_path(r"^%s" % str(PAGES_SLUG), include("mezzanine.pages.urls")),
         ]
     else:
         urlpatterns += [
-            url(r"^", include("mezzanine.pages.urls")),
+            re_path(r"^", include("mezzanine.pages.urls")),
         ]
