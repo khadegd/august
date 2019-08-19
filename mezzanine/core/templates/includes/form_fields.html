@@ -1,5 +1,6 @@
 {% load i18n %}
 {% load mezzanine_tags %}
+{% load crispy_forms_tags %}
 
 {% nevercache %}
 <input type="hidden" name="referrer" value="{{ request.META.HTTP_REFERER }}">
@@ -7,6 +8,10 @@
 {% endnevercache %}
 
 {% for field in form_for_fields %}
+{{ field | as_crispy_field }}
+{% endfor %}
+
+{% comment %}
 {% if field.is_hidden %}
 {{ field }}
 {% else %}
@@ -28,3 +33,4 @@
 </div>
 {% endif %}
 {% endfor %}
+{% endcomment %}

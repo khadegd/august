@@ -8,7 +8,7 @@ from __future__ import unicode_literals
 from future.builtins import str
 
 # from django.conf.urls import include, url
-from django.urls import include, re_path, path
+from django.urls import include, re_path
 from django.contrib.sitemaps.views import sitemap
 from django.views.i18n import JavaScriptCatalog
 from django.http import HttpResponse

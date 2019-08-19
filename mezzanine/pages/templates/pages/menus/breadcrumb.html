@@ -13,8 +13,8 @@
 
     {% if page.is_current_or_ascendant %}
     {% if page.is_current %}
-    <li class="breadcrumb-item" id="breadcrumb-menu-{{ page.html_id }}"
-        class="active">{{ page.title }}</li>
+    <li class="breadcrumb-item active" id="breadcrumb-menu-{{ page.html_id }}">{{ page.title }}
+    </li>
     {% else %}
     <li class="breadcrumb-item" id="breadcrumb-menu-{{ page.html_id }}">
         <a href="{{ page.get_absolute_url }}">{{ page.title }}</a>
