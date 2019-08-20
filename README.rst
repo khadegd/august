@@ -1,6 +1,8 @@
 .. image:: https://secure.travis-ci.org/stephenmcd/mezzanine.png?branch=master
    :target: http://travis-ci.org/stephenmcd/mezzanine
 
+August. Fork of Mezzanine.
+Forked by `Ganesh Khade <https://twitter.com/khadegd>`_
 Created by `Stephen McDonald <http://twitter.com/stephen_mcd>`_
 
 ========
