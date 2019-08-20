@@ -24,7 +24,7 @@
         </h4>
     <p>{{ comment.comment|comment_filter }}</p>
     {% endif %}
-    
+
     {% if not comment.is_removed and comment.is_public %}
     <a href="{{ request.path }}#comment-{{ comment.id }}">
         <span class="glyphicon glyphicon-link"></span> {% trans "Link" %}
@@ -61,7 +61,7 @@
     {% endif %}
 
     {% comment_thread comment %}
-    
+
     {% if not comment.is_removed and comment.is_public or request.user.is_staff %}</div>{% endif %}
     {% endeditable %}
 </div>

@@ -21,9 +21,11 @@ $(function() {
     {% else %}
     {% fields_for unposted_comment_form %}
     {% endif %}
+    <br>
     <div class="form-actions">
-        <input class="btn btn-primary btn-lg" type="submit" value="{% trans "Comment" %}">
+        <input class="btn btn-primary" type="submit" value="{% trans "Comment" %}">
     </div>
+    <br>
 </form>
 {% endif %}
 </div>
