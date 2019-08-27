@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from django.conf import include, re_path, path
+from django.urls import include, re_path, path
 # from django.conf.urls import url
 
 from mezzanine.accounts import views
