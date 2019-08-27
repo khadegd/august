@@ -1,7 +1,7 @@
 .. image:: https://secure.travis-ci.org/stephenmcd/mezzanine.png?branch=master
    :target: http://travis-ci.org/stephenmcd/mezzanine
 
-August. Fork of Mezzanine.
+August. Fork of Mezzanine. Not production ready. Use it at your own risk.
 Forked by `Ganesh Khade <https://twitter.com/khadegd>`_
 Created by `Stephen McDonald <http://twitter.com/stephen_mcd>`_
 
