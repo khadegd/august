@@ -1,5 +1,4 @@
-.. image:: https://secure.travis-ci.org/stephenmcd/mezzanine.png?branch=master
-   :target: http://travis-ci.org/stephenmcd/mezzanine
+Please use `August Demo <https://github.com/khadegd/august-demo>`_ to kick start.
 
 August. Fork of Mezzanine. Not production ready. Use it at your own risk.
 Forked by `Ganesh Khade <https://twitter.com/khadegd>`_
