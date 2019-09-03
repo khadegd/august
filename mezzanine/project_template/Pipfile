@@ -1,0 +1,22 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pyflakes = "*"
+pep8 = "*"
+
+[packages]
+django = "*"
+django-extensions = "*"
+ipython = "*"
+ipdb = "*"
+django-crispy-forms = "*"
+werkzeug = "*"
+filebrowser-safe = {editable = true,git = "https://github.com/khadegd/filebrowser-safe.git"}
+mezzanine = {editable = true,git = "https://github.com/khadegd/august.git"}
+grappelli-safe = {editable = true,git = "https://github.com/khadegd/grappelli-safe.git"}
+
+[requires]
+python_version = "3.7"
