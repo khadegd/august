@@ -1,6 +1,5 @@
 from __future__ import unicode_literals
 
-from django.conf.urls import url
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.urls import path, include, re_path
@@ -26,7 +25,7 @@ urlpatterns = i18n_patterns(
 
 if settings.USE_MODELTRANSLATION:
     urlpatterns += [
-        url('^i18n/$', set_language, name='set_language'),
+        re_path('^i18n/$', set_language, name='set_language'),
     ]
 
 urlpatterns += [
@@ -40,7 +39,7 @@ urlpatterns += [
     # one homepage pattern, so if you use a different one, comment this
     # one out.
 
-    url(r"^$", direct_to_template, {"template": "index.html"}, name="home"),
+    re_path(r"^$", direct_to_template, {"template": "index.html"}, name="home"),
 
     # HOMEPAGE AS AN EDITABLE PAGE IN THE PAGE TREE
     # ---------------------------------------------
@@ -80,7 +79,7 @@ urlpatterns += [
     # ``mezzanine.urls``, go right ahead and take the parts you want
     # from it, and use them directly below instead of using
     # ``mezzanine.urls``.
-    url(r"^", include("mezzanine.urls")),
+    path("", include("mezzanine.urls")),
 
     # MOUNTING MEZZANINE UNDER A PREFIX
     # ---------------------------------
