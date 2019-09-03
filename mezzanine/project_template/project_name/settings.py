@@ -239,7 +239,6 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.redirects',
     'django.contrib.sessions',
-    'django.contrib.messages',
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'django.contrib.messages',
