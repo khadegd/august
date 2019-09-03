@@ -185,11 +185,11 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, STATIC_URL.strip("/"))
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = STATIC_URL + "media/"
+MEDIA_URL = "/media/"
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, *MEDIA_URL.strip("/").split("/"))
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, MEDIA_URL.strip("/"))
 
 # Package/module name to import the root urlpatterns from for the project.
 ROOT_URLCONF = "%s.urls" % PROJECT_APP
@@ -233,33 +233,37 @@ if DJANGO_VERSION < (1, 9):
 # APPLICATIONS #
 ################
 
-INSTALLED_APPS = (
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.redirects",
-    "django.contrib.sessions",
-    "django.contrib.sites",
-    "django.contrib.sitemaps",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
-    "mezzanine.boot",
-    "mezzanine.conf",
-    "mezzanine.core",
-    "mezzanine.generic",
-    "mezzanine.pages",
-    "mezzanine.blog",
-    "mezzanine.forms",
-    "mezzanine.galleries",
-    "mezzanine.twitter",
-    # "mezzanine.accounts",
-)
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.redirects',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'mezzanine.boot',
+    'mezzanine.conf',
+    'mezzanine.core',
+    'mezzanine.generic',
+    'mezzanine.pages',
+    'mezzanine.blog',
+    'mezzanine.forms',
+    'mezzanine.galleries',
+    'mezzanine.twitter',
+    # 'mezzanine.accounts',
+    'crispy_forms'
+]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # List of middleware classes to use. Order is important; in the request phase,
 # these middleware classes will be applied in the order given, and in the
 # response phase the middleware will be applied in reverse order.
 MIDDLEWARE = (
-    "mezzanine.core.middleware.UpdateCacheMiddleware",
+    'mezzanine.core.middleware.UpdateCacheMiddleware',
 
     'django.contrib.sessions.middleware.SessionMiddleware',
     # Uncomment if using internationalisation or localisation
@@ -270,12 +274,12 @@ MIDDLEWARE = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    "mezzanine.core.request.CurrentRequestMiddleware",
-    "mezzanine.core.middleware.RedirectFallbackMiddleware",
-    "mezzanine.core.middleware.AdminLoginInterfaceSelectorMiddleware",
-    "mezzanine.core.middleware.SitePermissionMiddleware",
-    "mezzanine.pages.middleware.PageMiddleware",
-    "mezzanine.core.middleware.FetchFromCacheMiddleware",
+    'mezzanine.core.request.CurrentRequestMiddleware',
+    'mezzanine.core.middleware.RedirectFallbackMiddleware',
+    'mezzanine.core.middleware.AdminLoginInterfaceSelectorMiddleware',
+    'mezzanine.core.middleware.SitePermissionMiddleware',
+    'mezzanine.pages.middleware.PageMiddleware',
+    'mezzanine.core.middleware.FetchFromCacheMiddleware',
 )
 
 if DJANGO_VERSION < (1, 10):
