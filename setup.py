@@ -43,7 +43,7 @@ try:
         author_email="stephen.mc@gmail.com",
         description="An open source content management platform built using "
                     "the Django framework.",
-        long_description=open("README.rst", 'rb').read().decode('utf-8'),
+        long_description=open("README.md", 'rb').read().decode('utf-8'),
         license="BSD",
         url="http://mezzanine.jupo.org/",
         zip_safe=False,
