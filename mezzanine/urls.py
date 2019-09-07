@@ -3,10 +3,6 @@ This is the main ``urlconf`` for Mezzanine - it sets up patterns for
 all the various Mezzanine apps, third-party apps like Grappelli and
 filebrowser.
 """
-
-from __future__ import unicode_literals
-from future.builtins import str
-
 from django.urls import include, re_path
 from django.contrib.sitemaps.views import sitemap
 from django.views.i18n import JavaScriptCatalog

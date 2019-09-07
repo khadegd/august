@@ -1,7 +1,4 @@
-from __future__ import unicode_literals
-
 import django
-from future.builtins import int, zip
 
 from functools import reduce
 from operator import ior, iand

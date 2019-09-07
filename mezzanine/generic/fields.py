@@ -1,6 +1,3 @@
-from __future__ import division, unicode_literals
-from future.builtins import str
-
 from copy import copy
 
 from django.contrib.contenttypes.fields import GenericRelation
